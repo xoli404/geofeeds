@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoFeeds - GIS & Satellite Intelligence Platform</title>
+    <meta name="description" content="Professional GIS platform for South Africa with global reach. HD satellite imagery, real estate analytics, and agricultural intelligence.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#486581',
+                            600: '#334e68',
+                            700: '#243b53',
+                            800: '#102a43',
+                            900: '#0a1929'
+                        },
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a'
+                        },
+                        green: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-navy-50">
+    <!-- Header & Navigation -->
+    <header class="bg-navy-900 text-white shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-globe-africa text-teal-400 text-2xl"></i>
+                    <span class="text-xl font-bold">GeoFeeds</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="hover:text-teal-300 transition-colors">Home</a>
+                    <a href="#" class="hover:text-teal-300 transition-colors">Map Viewer</a>
+                    <a href="#" class="hover:text-teal-300 transition-colors">Dashboards</a>
+                    <a href="#" class="hover:text-teal-300 transition-colors">Pricing</a>
+                    <a href="#" class="hover:text-teal-300 transition-colors">Blog</a>
+                    <a href="#" class="hover:text-teal-300 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="bg-teal-600 hover:bg-teal-500 px-4 py-2 rounded-lg transition-colors">
+                        Sign In
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg transition-colors">
+                        Free Trial
+                    </button>
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-navy-800 to-navy-900 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    GIS & Satellite Intelligence
+                    <span class="text-teal-400">Platform</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-navy-100 mb-8">
+                    Professional geospatial analytics for South Africa with global reach
+                </p>
+                <p class="text-lg text-navy-200 mb-12 max-w-2xl mx-auto">
+                    Serving government agencies, real estate professionals, and agricultural enterprises with cutting-edge satellite intelligence and spatial analysis.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-teal-600 hover:bg-teal-500 px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                        Explore Map Viewer
+                    </button>
+                    <button class="border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-navy-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                        View Pricing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-shrink-0">
+                        <img src="https://picsum.photos/200?random=1" alt="Xoli Xaba - Founder" class="w-48 h-48 rounded-full object-cover shadow-lg">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-navy-800 mb-4">Founded by Xoli Xaba</h2>
+                        <p class="text-lg text-navy-600 mb-4">
+                            Retired GIS Specialist & Senior GIS Technician with 22 years of experience in municipal mapping and environmental analysis.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-navy-700">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marked-alt text-teal-500 mr-3"></i>
+                                <span>Property Valuation Rolls</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-draw-polygon text-teal-500 mr-3"></i>
+                                <span>Cadastral & Infrastructure Mapping</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-water text-teal-500 mr-3"></i>
+                                <span>Wetland Monitoring</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-database text-teal-500 mr-3"></i>
+                                <span>Spatial Databases</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-navy-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-navy-800 mb-12">Platform Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Interactive Map Viewer -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-map text-teal-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">Interactive Map Viewer</h3>
+                    <p class="text-navy-600 mb-4">Base maps, multiple layers, and advanced search functionality for comprehensive spatial analysis.</p>
+                    <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Free</span>
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud-sun text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">Weather Widget</h3>
+                    <p class="text-navy-600 mb-4">Auto-locating weather data integrated with OpenWeatherMap API for real-time climate insights.</p>
+                    <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Free</span>
+                </div>
+
+                <!-- HD Satellite Viewer -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-satellite text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">HD Satellite Viewer</h3>
+                    <p class="text-navy-600 mb-4">High-resolution imagery from Sentinel and Landsat satellites with advanced processing capabilities.</p>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">Premium</span>
+                </div>
+
+                <!-- Real Estate Dashboard -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">Real Estate Dashboard</h3>
+                    <p class="text-navy-600 mb-4">Parcel analytics, valuation data, zoning information, and export capabilities for property professionals.</p>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">Premium</span>
+                </div>
+
+                <!-- Agriculture Dashboard -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tractor text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">Agriculture Dashboard</h3>
+                    <p class="text-navy-600 mb-4">NDVI analysis, rainfall data, soil monitoring, and shapefile upload for precision agriculture.</p>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">Premium</span>
+                </div>
+
+                <!-- API Access -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy-800 mb-3">API Access</h3>
+                    <p class="text-navy-600 mb-4">Comprehensive API integration with major geospatial services and custom development capabilities.</p>
+                    <span class="inline-block bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Demo Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-navy-800 mb-12">Interactive Map Viewer</h2>
+            
+            <div class="bg-navy-800 rounded-xl shadow-2xl overflow-hidden">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Sidebar -->
+                    <div class="lg:w-1/4 bg-navy-700 p-6">
+                        <h3 class="text-white text-lg font-semibold mb-4">Layers & Tools</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-navy-600 rounded-lg p-4">
+                                <h4 class="text-teal-300 font-medium mb-2">Base Maps</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="radio" name="basemap" class="mr-2" checked>
+                                        OpenStreetMap
+                                    </label>
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="radio" name="basemap" class="mr-2">
+                                        Satellite
+                                    </label>
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="radio" name="basemap" class="mr-2">
+                                        Terrain
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-navy-600 rounded-lg p-4">
+                                <h4 class="text-teal-300 font-medium mb-2">Data Layers</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="checkbox" class="mr-2">
+                                        Property Boundaries
+                                    </label>
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="checkbox" class="mr-2">
+                                        Land Use
+                                    </label>
+                                    <label class="flex items-center text-white text-sm">
+                                        <input type="checkbox" class="mr-2">
+                                        Vegetation Index
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-navy-600 rounded-lg p-4">
+                                <h4 class="text-teal-300 font-medium mb-2">Search Location</h4>
+                                <div class="flex">
+                                    <input type="text" placeholder="Enter address or coordinates" class="flex-1 bg-navy-500 text-white px-3 py-2 rounded-l-lg text-sm">
+                                    <button class="bg-teal-600 hover:bg-teal-500 px-4 rounded-r-lg">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Area -->
+                    <div class="lg:w-3/4 bg-navy-900 p-4">
+                        <div class="bg-navy-800 rounded-lg h-96 flex items-center justify-center">
+                            <div class="text-center text-navy-300">
+                                <i class="fas fa-globe-africa text-6xl mb-4"></i>
+                                <p class="text-lg">Interactive Map Viewer</p>
+                                <p class="text-sm mt-2">Loading geospatial data...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Weather Widget -->
+                        <div class="mt-4 bg-teal-600 rounded-lg p-4 text-white">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <i class="fas fa-cloud-sun text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-semibold">Current Weather</div>
+                                        <div class="text-sm">Auto-detected location</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-2xl font-bold">24°C</div>
+                                    <div class="text-sm">Partly Cloudy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-16 bg-navy-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-navy-800 mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-center text-navy-600 text-lg mb-12">Start free, upgrade as you grow</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Tier -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-green-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-navy-800 mb-2">Free</h3>
+                        <div class="text-4xl font-bold text-green-600">R0</div>
+                        <div class="text-navy-600">forever</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Interactive Map Viewer</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Weather Widget</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Blog Access</span>
+                        </li>
+                        <li class="flex items-center text-navy-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>HD Satellite Imagery</span>
+                        </li>
+                        <li class="flex items-center text-navy-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>Advanced Dashboards</span>
+                        </li>
+                        <li class="flex items-center text-navy-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>Data Exports</span>
+                        </li>
+                        <li class="flex items-center text-navy-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>API Access</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-lg font-semibold transition-colors">
+                        Get Started Free
+                    </button>
+                </div>
+
+                <!-- Professional Tier -->
+                <div class="bg-white rounded-xl shadow-2xl p-8 border-2 border-teal-500 transform scale-105 relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <span class="bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">MOST POPULAR</span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-navy-800 mb-2">Professional</h3>
+                        <div class="text-4xl font-bold text-teal-600">R499</div>
+                        <div class="text-navy-600">per month</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Everything in Free</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>HD Satellite Imagery</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Real Estate Dashboard</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Agriculture Dashboard</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Data Exports (PDF, CSV)</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Basic API Access</span>
+                        </li>
+                        <li class="flex items-center text-navy-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>Advanced API Features</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-teal-600 hover:bg-teal-500 text-white py-3 rounded-lg font-semibold transition-colors">
+                        Start 14-Day Trial
+                    </button>
+                </div>
+
+                <!-- Enterprise Tier -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-purple-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-navy-800 mb-2">Enterprise</h3>
+                        <div class="text-4xl font-bold text-purple-600">Custom</div>
+                        <div class="text-navy-600">tailored pricing</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Everything in Professional</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Advanced API Access</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Custom Integrations</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>White-label Solutions</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Priority Support</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>Dedicated Account Manager</span>
+                        </li>
+                        <li class="flex items-center text-green-600">
+                            <i class="fas fa-check-circle mr-3"></i>
+                            <span>SLA Guarantee</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-lg font-semibold transition-colors">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-globe-africa text-teal-400 text-2xl"></i>
+                        <span class="text-xl font-bold">GeoFeeds</span>
+                    </div>
+                    <p class="text-navy-200 text-sm">
+                        Professional GIS and satellite intelligence platform serving South Africa with global capabilities.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-sm text-navy-200">
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Map Viewer</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Real Estate Dashboard</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Agriculture Dashboard</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-navy-200">
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-navy-200">
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Data Processing</a></li>
+                        <li><a href="#" class="hover:text-teal-300 transition-colors">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-navy-700 mt-8 pt-8 text-center text-navy-300 text-sm">
+                <p>&copy; 2024 GeoFeeds GIS Platform. All rights reserved.</p>
+                <p class="mt-2">Built with expertise from 22 years of GIS experience in South Africa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent default anchor behavior
+            const links = document.querySelectorAll('a[href="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // In a real implementation, this would handle navigation
+                    console.log('Navigation clicked:', this.textContent);
+                });
+            });
+
+            // Button click handlers
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const text = this.textContent.trim();
+                    if (text.includes('Sign In') || text.includes('Free Trial') || 
+                        text.includes('Get Started') || text.includes('Start Trial') || 
+                        text.includes('Contact Sales')) {
+                        console.log('Button clicked:', text);
+                        // In a real implementation, this would trigger modals or navigation
+                    }
+                });
+            });
+
+            // Form element interactions
+            const checkboxes = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    console.log('Layer toggled:', this.nextElementSibling.textContent);
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('input[placeholder*="address"]');
+            const searchButton = searchInput?.nextElementSibling;
+            
+            if (searchButton) {
+                searchButton.addEventListener('click', function() {
+                    const query = searchInput.value;
+                    if (query) {
+                        console.log('Searching for:', query);
+                        // In a real implementation, this would trigger map search
+                    }
+                });
+                
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        console.log('Searching for:', this.value);
+                        // In a real implementation, this would trigger map search
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
