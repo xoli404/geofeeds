@@ -6,37 +6,92 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GeoFeeds – Spatial Intelligence for Land, Property & Agriculture</title>
   <meta name="description" content="GeoFeeds: HD satellite imagery, real estate analytics and agricultural intelligence for South Africa and beyond." />
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Restore custom color palette and fonts so navy/teal classes work -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#f0f4f8',
+              100: '#d9e2ec',
+              200: '#bcccdc',
+              300: '#9fb3c8',
+              400: '#829ab1',
+              500: '#486581',
+              600: '#334e68',
+              700: '#243b53',
+              800: '#102a43',
+              900: '#0a1929'
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a'
+            },
+            green: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Small custom styles for carousel fade */
+    /* Carousel fade */
     .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
     .carousel-slide.active { opacity: 1; position: relative; }
-    .carousel-container { position: relative; width: 100%; height: 420px; overflow: hidden; border-radius: 12px; }
-    @media (min-width:1024px) { .carousel-container { height: 520px; } }
-    /* Smooth scroll padding offset for fixed header */
+    .carousel-container { position: relative; width: 100%; height: 60vh; max-height: 640px; overflow: hidden; }
+    .carousel-container img { width: 100%; height: 100%; object-fit: cover; display:block; }
+    /* Header offset for anchor scrolling */
     :root { --header-height: 72px; }
-    section { scroll-margin-top: calc(var(--header-height) + 16px); }
+    section { scroll-margin-top: calc(var(--header-height) + 12px); }
   </style>
 </head>
-<body class="font-sans bg-navy-50" style="--tw-bg-opacity: 1;">
 
-  <!-- Header -->
-  <header id="site-header" class="fixed top-0 left-0 right-0 z-40 bg-navy-900 text-white shadow">
-    <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+<body class="font-sans bg-navy-50 text-navy-900">
+
+  <!-- Header (original dark ribbon look) -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-navy-900 text-white shadow">
+    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <i class="fas fa-globe-africa text-teal-400 text-2xl"></i>
-        <a href="index.html" class="text-xl font-bold">GeoFeeds</a>
+        <a href="index.html" class="text-xl font-bold tracking-tight">GeoFeeds</a>
       </div>
 
       <div class="hidden md:flex items-center space-x-6">
-        <!-- Internal one-page anchors -->
-        <a href="#home" class="nav-link hover:text-teal-300">Home</a>
-        <a href="#features" class="nav-link hover:text-teal-300">Features</a>
-        <a href="#map" class="nav-link hover:text-teal-300">Map Viewer</a>
-        <a href="#pricing" class="nav-link hover:text-teal-300">Pricing</a>
+        <a href="#home" class="hover:text-teal-300">Home</a>
+        <a href="#features" class="hover:text-teal-300">Features</a>
+        <a href="#map" class="hover:text-teal-300">Map Viewer</a>
+        <a href="#pricing" class="hover:text-teal-300">Pricing</a>
 
-        <!-- Links to internal pages (open pages within GeoFeeds) -->
+        <!-- Internal site pages (open inside GeoFeeds) -->
         <a href="about.html" class="hover:text-teal-300">About</a>
         <a href="blog.html" class="hover:text-teal-300">Blog</a>
         <a href="api.html" class="hover:text-teal-300">API Docs</a>
@@ -53,7 +108,7 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden bg-navy-900 text-white">
+    <div id="mobile-menu" class="hidden bg-navy-900 text-white border-t border-navy-800">
       <div class="px-4 py-4 space-y-2">
         <a href="#home" class="block">Home</a>
         <a href="#features" class="block">Features</a>
@@ -65,64 +120,60 @@
     </div>
   </header>
 
-  <main class="pt-20"> <!-- padding for fixed header -->
+  <main class="pt-28"> <!-- add top padding for fixed header -->
 
-    <!-- HERO / Carousel -->
-    <section id="home" class="bg-gradient-to-br from-navy-800 to-navy-900 text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <!-- Text Column -->
-          <div class="order-2 lg:order-1 text-center lg:text-left">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
-              Spatial Intelligence for <span class="text-teal-400">Land, Property & Agriculture</span>
+    <!-- HERO: full-width carousel -->
+    <section id="home" class="relative">
+      <div class="carousel-container w-full">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active" aria-hidden="false">
+          <img src="/images/sat.png" alt="Satellite imagery over South Africa">
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide" aria-hidden="true">
+          <img src="/images/agric.png" alt="Agriculture NDVI imagery">
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide" aria-hidden="true">
+          <img src="/images/terrain.jpg" alt="Terrain / topography placeholder">
+        </div>
+        <!-- Slide 4 -->
+        <div class="carousel-slide" aria-hidden="true">
+          <img src="/images/property.jpg" alt="Property analytics placeholder">
+        </div>
+      </div>
+
+      <!-- Overlay text block positioned over the carousel -->
+      <div class="absolute inset-0 flex items-center">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl bg-black/35 backdrop-blur-sm rounded-lg p-8">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+              Spatial Intelligence for <span class="text-teal-300">Land, Property & Agriculture</span>
             </h1>
-            <p class="mt-4 text-lg text-navy-100 max-w-xl">
-              Trusted GIS & HD satellite insights for government, real estate, and agribusiness — built in South Africa, scaled for the world.
+            <p class="mt-4 text-lg text-navy-100 max-w-2xl">
+              Trusted GIS and HD satellite insights for government, real estate, and agribusiness — built in South Africa, scaled for the world.
             </p>
-
-            <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#map" class="inline-block bg-teal-600 hover:bg-teal-500 px-6 py-3 rounded-lg text-lg font-semibold">Explore Map Viewer</a>
-              <a href="#pricing" class="inline-block border-2 border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-navy-900 px-6 py-3 rounded-lg text-lg font-semibold">View Pricing</a>
-            </div>
-          </div>
-
-          <!-- Carousel Column -->
-          <div class="order-1 lg:order-2">
-            <div class="carousel-container mx-auto">
-              <!-- Slide 1 -->
-              <div class="carousel-slide active">
-                <img src="/images/sat.png" alt="Satellite imagery" class="w-full h-full object-cover">
-              </div>
-              <!-- Slide 2 -->
-              <div class="carousel-slide">
-                <img src="/images/agric.png" alt="Agricultural map" class="w-full h-full object-cover">
-              </div>
-              <!-- Slide 3 (placeholder) -->
-              <div class="carousel-slide">
-                <img src="/images/terrain.jpg" alt="Topographic / terrain" class="w-full h-full object-cover">
-              </div>
-              <!-- Slide 4 (property placeholder) -->
-              <div class="carousel-slide">
-                <img src="/images/property.jpg" alt="Property analytics" class="w-full h-full object-cover">
-              </div>
-            </div>
-
-            <!-- small indicators -->
-            <div class="flex items-center justify-center gap-2 mt-3">
-              <button class="indicator w-3 h-3 rounded-full bg-navy-700" data-index="0" aria-label="Slide 1"></button>
-              <button class="indicator w-3 h-3 rounded-full bg-navy-700/60" data-index="1" aria-label="Slide 2"></button>
-              <button class="indicator w-3 h-3 rounded-full bg-navy-700/60" data-index="2" aria-label="Slide 3"></button>
-              <button class="indicator w-3 h-3 rounded-full bg-navy-700/60" data-index="3" aria-label="Slide 4"></button>
+            <div class="mt-6 flex gap-4">
+              <a href="#map" class="inline-block bg-teal-500 hover:bg-teal-400 text-white px-5 py-3 rounded-lg font-semibold">Explore Map Viewer</a>
+              <a href="#pricing" class="inline-block border-2 border-teal-300 text-teal-300 hover:bg-teal-300 hover:text-navy-900 px-5 py-3 rounded-lg font-semibold">View Pricing</a>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- carousel indicators bottom center -->
+      <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+        <button class="indicator w-3 h-3 rounded-full bg-white/60" data-index="0" aria-label="Slide 1"></button>
+        <button class="indicator w-3 h-3 rounded-full bg-white/30" data-index="1" aria-label="Slide 2"></button>
+        <button class="indicator w-3 h-3 rounded-full bg-white/30" data-index="2" aria-label="Slide 3"></button>
+        <button class="indicator w-3 h-3 rounded-full bg-white/30" data-index="3" aria-label="Slide 4"></button>
       </div>
     </section>
 
     <!-- FEATURES -->
     <section id="features" class="py-16 bg-navy-50">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-navy-800 mb-8">Platform Features</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-navy-800 mb-6">Platform Features</h2>
         <p class="text-center text-navy-600 mb-8 max-w-3xl mx-auto">
           GeoFeeds combines authoritative spatial layers, HD satellite imagery, and analytics dashboards for property, infrastructure and agriculture.
         </p>
@@ -133,7 +184,7 @@
               <i class="fas fa-map text-teal-600"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2">Interactive Map Viewer</h3>
-            <p class="text-navy-600">Multiple base maps, toggled layers and search for parcel-level insights.</p>
+            <p class="text-navy-600">Multiple base maps, toggleable layers and fast search for parcel-level insights.</p>
             <span class="inline-block mt-4 px-3 py-1 text-sm rounded-full bg-green-100 text-green-800">Free</span>
           </div>
 
@@ -151,7 +202,7 @@
               <i class="fas fa-satellite text-purple-600"></i>
             </div>
             <h3 class="text-xl font-semibold mb-2">HD Satellite Viewer</h3>
-            <p class="text-navy-600">Compare historical and recent imagery (Sentinel, Landsat) and export reports.</p>
+            <p class="text-navy-600">Compare historical & recent imagery (Sentinel, Landsat) and export reports.</p>
             <span class="inline-block mt-4 px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800">Premium</span>
           </div>
 
@@ -185,51 +236,31 @@
       </div>
     </section>
 
-    <!-- MAP DEMO -->
+    <!-- MAP -->
     <section id="map" class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-navy-800 mb-8">Interactive Map Viewer</h2>
 
         <div class="bg-navy-800 rounded-xl shadow-2xl overflow-hidden">
           <div class="flex flex-col lg:flex-row">
-            <!-- Sidebar -->
             <aside class="lg:w-1/4 bg-navy-700 p-6">
               <h3 class="text-white text-lg font-semibold mb-4">Layers & Tools</h3>
-
               <div class="space-y-4">
                 <div class="bg-navy-600 rounded-lg p-4">
                   <h4 class="text-teal-300 font-medium mb-2">Base Maps</h4>
                   <div class="space-y-2">
-                    <label class="flex items-center text-white text-sm">
-                      <input type="radio" name="basemap" class="mr-2" checked>
-                      OpenStreetMap
-                    </label>
-                    <label class="flex items-center text-white text-sm">
-                      <input type="radio" name="basemap" class="mr-2">
-                      Satellite
-                    </label>
-                    <label class="flex items-center text-white text-sm">
-                      <input type="radio" name="basemap" class="mr-2">
-                      Terrain
-                    </label>
+                    <label class="flex items-center text-white text-sm"><input type="radio" name="basemap" class="mr-2" checked>OpenStreetMap</label>
+                    <label class="flex items-center text-white text-sm"><input type="radio" name="basemap" class="mr-2">Satellite</label>
+                    <label class="flex items-center text-white text-sm"><input type="radio" name="basemap" class="mr-2">Terrain</label>
                   </div>
                 </div>
 
                 <div class="bg-navy-600 rounded-lg p-4">
                   <h4 class="text-teal-300 font-medium mb-2">Data Layers</h4>
                   <div class="space-y-2">
-                    <label class="flex items-center text-white text-sm">
-                      <input type="checkbox" class="mr-2">
-                      Property Boundaries
-                    </label>
-                    <label class="flex items-center text-white text-sm">
-                      <input type="checkbox" class="mr-2">
-                      Land Use
-                    </label>
-                    <label class="flex items-center text-white text-sm">
-                      <input type="checkbox" class="mr-2">
-                      Vegetation Index
-                    </label>
+                    <label class="flex items-center text-white text-sm"><input type="checkbox" class="mr-2">Property Boundaries</label>
+                    <label class="flex items-center text-white text-sm"><input type="checkbox" class="mr-2">Land Use</label>
+                    <label class="flex items-center text-white text-sm"><input type="checkbox" class="mr-2">Vegetation Index</label>
                   </div>
                 </div>
 
@@ -237,15 +268,12 @@
                   <h4 class="text-teal-300 font-medium mb-2">Search Location</h4>
                   <div class="flex">
                     <input id="search-input" type="text" placeholder="Enter address or coordinates" class="flex-1 bg-navy-500 text-white px-3 py-2 rounded-l-lg text-sm">
-                    <button id="search-btn" class="bg-teal-600 hover:bg-teal-500 px-4 rounded-r-lg text-white">
-                      <i class="fas fa-search"></i>
-                    </button>
+                    <button id="search-btn" class="bg-teal-600 hover:bg-teal-500 px-4 rounded-r-lg text-white"><i class="fas fa-search"></i></button>
                   </div>
                 </div>
               </div>
             </aside>
 
-            <!-- Map area -->
             <div class="lg:w-3/4 bg-navy-900 p-4">
               <div id="map-canvas" class="bg-navy-800 rounded-lg h-96 flex items-center justify-center">
                 <div class="text-center text-navy-300">
@@ -255,7 +283,6 @@
                 </div>
               </div>
 
-              <!-- Weather small card -->
               <div class="mt-4 bg-teal-600 rounded-lg p-4 text-white">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center">
@@ -285,7 +312,6 @@
         <p class="text-center text-navy-600 text-lg mb-12">Start free, upgrade as you grow.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <!-- Free -->
           <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-green-200">
             <div class="text-center mb-6">
               <h3 class="text-2xl font-bold text-navy-800 mb-2">Free</h3>
@@ -301,7 +327,6 @@
             <a href="#pricing" class="block w-full text-center bg-green-600 hover:bg-green-500 text-white py-3 rounded-lg">Get Started Free</a>
           </div>
 
-          <!-- Professional -->
           <div class="bg-white rounded-xl shadow-2xl p-8 border-2 border-teal-500 transform scale-105 relative">
             <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <span class="bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">MOST POPULAR</span>
@@ -318,13 +343,11 @@
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>HD Satellite Imagery</li>
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Real Estate Dashboard</li>
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Agriculture Dashboard</li>
-              <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Data Exports (PDF, CSV)</li>
             </ul>
 
             <a href="#pricing" class="block w-full text-center bg-teal-600 hover:bg-teal-500 text-white py-3 rounded-lg">Start 14-Day Trial</a>
           </div>
 
-          <!-- Enterprise -->
           <div class="bg-white rounded-xl shadow-lg p-8 border-2 border-purple-200">
             <div class="text-center mb-6">
               <h3 class="text-2xl font-bold text-navy-800 mb-2">Enterprise</h3>
@@ -336,7 +359,6 @@
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Everything in Professional</li>
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Advanced API Access</li>
               <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>Custom Integrations</li>
-              <li class="flex items-center text-green-600"><i class="fas fa-check-circle mr-3"></i>White-label Solutions</li>
             </ul>
 
             <a href="contact.html" class="block w-full text-center bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-lg">Contact Sales</a>
@@ -345,11 +367,11 @@
       </div>
     </section>
 
-    <!-- small Homepage About snippet -->
-    <section id="home-about" class="py-12 bg-white">
+    <!-- short about snippet on homepage -->
+    <section class="py-12 bg-white">
       <div class="container mx-auto px-4 max-w-4xl">
         <h3 class="text-2xl font-bold text-navy-800 mb-4">About GeoFeeds</h3>
-        <p class="text-navy-600">GeoFeeds is a South African spatial intelligence platform offering HD satellite imagery, parcel analytics, and agricultural monitoring. For full founder bio and company details, visit the <a href="about.html" class="text-teal-500 underline">About page</a>.</p>
+        <p class="text-navy-600">GeoFeeds is a South African spatial intelligence platform offering HD satellite imagery, parcel analytics, and agricultural monitoring. For the full founder bio and company details visit the <a href="about.html" class="text-teal-500 underline">About page</a>.</p>
       </div>
     </section>
 
@@ -407,17 +429,15 @@
 
   <!-- Scripts -->
   <script>
-    // Set current year
+    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Mobile menu toggle
     const mobileBtn = document.getElementById('mobile-open');
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Smooth scroll for internal anchors
+    // Smooth scrolling for same-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -431,51 +451,58 @@
       });
     });
 
-    // Carousel logic
+    // Carousel implementation
     (function() {
       const slides = Array.from(document.querySelectorAll('.carousel-slide'));
       const indicators = Array.from(document.querySelectorAll('.indicator'));
-      let idx = 0;
-      let interval = null;
-      const show = (i) => {
+      let index = 0;
+      let timer = null;
+
+      function show(i) {
         slides.forEach((s, n) => {
           s.classList.toggle('active', n === i);
+          s.setAttribute('aria-hidden', n === i ? 'false' : 'true');
         });
         indicators.forEach((b, n) => {
-          b.classList.toggle('bg-teal-600', n === i);
-          b.classList.toggle('bg-navy-700/60', n !== i);
+          b.classList.toggle('bg-white/90', n === i);
+          b.classList.toggle('bg-white/30', n !== i);
         });
-      };
-      const next = () => {
-        idx = (idx + 1) % slides.length;
-        show(idx);
-      };
+      }
+
+      function next() { index = (index + 1) % slides.length; show(index); }
+
       // Start
-      show(idx);
-      interval = setInterval(next, 4000);
-      // indicators click
-      indicators.forEach(b => {
-        b.addEventListener('click', () => {
-          clearInterval(interval);
-          idx = Number(b.dataset.index);
-          show(idx);
-          interval = setInterval(next, 4000);
+      show(index);
+      timer = setInterval(next, 4000);
+
+      // Click indicators
+      indicators.forEach(btn => {
+        btn.addEventListener('click', function() {
+          clearInterval(timer);
+          index = Number(this.dataset.index);
+          show(index);
+          timer = setInterval(next, 4000);
         });
+      });
+
+      // If images missing, log to console
+      slides.forEach((s,i)=> {
+        const img = s.querySelector('img');
+        if (img) {
+          img.addEventListener('error', () => {
+            console.warn('Carousel image missing:', img.src);
+            // show fallback background color if needed
+            s.style.background = (i % 2 === 0) ? '#0a1929' : '#14324a';
+          });
+        }
       });
     })();
 
-    // Small UI: console placeholders for search/buttons
+    // Search placeholder
     document.getElementById('search-btn')?.addEventListener('click', () => {
       const q = document.getElementById('search-input').value.trim();
-      if (q) { console.log('Search query:', q); alert('Search placeholder: ' + q); }
-      else { alert('Please enter an address or coordinates.'); }
-    });
-
-    // Prevent default for empty anchors in nav links that point to page files
-    document.querySelectorAll('a[href$=".html"]').forEach(a => {
-      a.addEventListener('click', function() {
-        // allow normal navigation — opening internal pages within site
-      });
+      if (!q) return alert('Please enter an address or coordinates (placeholder).');
+      alert('Search placeholder: ' + q);
     });
   </script>
 
