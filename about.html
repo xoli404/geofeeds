@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About – GeoFeeds GIS Platform</title>
+    
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tailwind Theme Configuration -->
+    <!-- Tailwind Theme -->
     <script>
         tailwind.config = {
             theme: {
@@ -60,9 +62,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body class="bg-navy-50 font-sans">
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header class="bg-navy-900 text-white shadow-lg">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-2">
@@ -81,11 +84,12 @@
         </nav>
     </header>
 
-    <!-- About Section -->
+    <!-- ABOUT SECTION -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4 max-w-4xl">
+
             <h1 class="text-5xl font-bold text-navy-900 text-center mb-10">About GeoFeeds</h1>
-            
+
             <p class="text-lg text-navy-700 leading-relaxed mb-6">
                 GeoFeeds is a professional GIS & satellite intelligence platform designed for South Africa with global analytical capabilities. 
                 The platform brings together high-resolution satellite data, spatial analytics and real-time environmental insights
@@ -104,27 +108,44 @@
                 infrastructure planning, agricultural sustainability, and data-driven decision-making at every level.
             </p>
 
-            <!-- Founder Section -->
+            <!-- FOUNDER SECTION -->
             <div class="mt-16 bg-navy-100 rounded-xl p-8 shadow-md">
-                <h2 class="text-3xl font-bold text-navy-900 mb-4">Founded by Xoli Xaba</h2>
+
+                <!-- Profile + Heading -->
+                <div class="flex items-start space-x-6 mb-6">
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-bold text-navy-900 mb-4">
+                            Founded by Xoli Xaba
+                        </h2>
+                    </div>
+
+                    <!-- PROFILE IMAGE -->
+                    <img src="images/xoli.jpg" alt="Xoli Photo"
+                         class="w-40 h-40 rounded-full object-cover shadow-md border-4 border-white">
+                </div>
+
+                <!-- Founder Description -->
                 <p class="text-lg text-navy-700 leading-relaxed mb-6">
                     With 22 years of experience as a GIS Specialist and Senior GIS Technician in the South African municipal sector,
                     Xoli brings deep expertise in spatial planning, property valuation rolls, land use management, environmental assessment, 
                     wetland monitoring and geospatial data infrastructure.
                 </p>
+
                 <p class="text-lg text-navy-700 leading-relaxed">
                     Throughout his career, Xoli has worked extensively in land audits, municipal environmental studies, infrastructure networks, 
-                    cadastral mapping and technical GIS support for government initiatives.  GeoFeeds is carrying on that tradition by using 
-                    contemporary online technology to make high-level GIS intelligence accessible to a wider audience.
+                    cadastral mapping and technical GIS support for government initiatives. GeoFeeds continues that tradition by using modern 
+                    online tools to make high-level GIS intelligence accessible to a wider audience.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="bg-navy-900 text-white py-12">
         <div class="container mx-auto px-4">
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
                         <i class="fas fa-globe-africa text-teal-400 text-2xl"></i>
@@ -134,7 +155,7 @@
                         Professional GIS and satellite intelligence platform serving South Africa with global capabilities.
                     </p>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Platform</h4>
                     <ul class="space-y-2 text-sm text-navy-200">
@@ -143,7 +164,7 @@
                         <li><a href="blog.html" class="hover:text-teal-300">Blog</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-navy-200">
@@ -152,7 +173,7 @@
                         <li><a href="contact.html" class="hover:text-teal-300">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Legal</h4>
                     <ul class="space-y-2 text-sm text-navy-200">
@@ -162,14 +183,17 @@
                         <li><a href="security.html" class="hover:text-teal-300">Security</a></li>
                     </ul>
                 </div>
+
             </div>
-            
+
             <div class="border-t border-navy-700 mt-8 pt-8 text-center text-navy-300 text-sm">
                 <p>&copy; 2024 GeoFeeds GIS Platform. All rights reserved.</p>
             </div>
+
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
 </body>
 </html>
